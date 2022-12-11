@@ -39,4 +39,19 @@ class DataHelper {
         )
         .toList();
   }
+
+  static List<int> _tumkrediler() {
+    return List.generate(10, (index) => index + 1).toList();
+  }
+
+  static List<DropdownMenuItem<double>> tumDerslerinKredileri() {
+    return _tumkrediler()
+        .map(
+          (e) => DropdownMenuItem(
+            child: Text(e.toString()),
+            value: e.toDouble(),
+          ),
+        )
+        .toList();
+  }
 }
