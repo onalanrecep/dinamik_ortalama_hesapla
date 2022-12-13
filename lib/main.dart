@@ -12,12 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dinanik Ortalama Hesapla',
+      title: 'Dinamik Ortalama Hesapla',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Sabitler.anaRenk,
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      home: OrtalamaHesaplaPage(),
+      home: const OrtalamaHesaplaPage(),
     );
   }
 }
