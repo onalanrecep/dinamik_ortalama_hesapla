@@ -1,6 +1,7 @@
 import 'package:dinamik_ortalama_hesapla/constants/app_constants.dart';
 import 'package:dinamik_ortalama_hesapla/helper/data_helper.dart';
 import 'package:dinamik_ortalama_hesapla/model/ders.dart';
+import 'package:dinamik_ortalama_hesapla/widgets/ders_listesi.dart';
 import 'package:dinamik_ortalama_hesapla/widgets/ortalama_goster.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class _OrtalamaHesaplaAppPageState extends State<OrtalamaHesaplaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -40,16 +42,13 @@ class _OrtalamaHesaplaAppPageState extends State<OrtalamaHesaplaPage> {
                 ),
                 Expanded(
                   flex: 1,
-                  child: OrtalamaGoster(ortalama: DataHelper.ortalamaHesapla(), dersSayisi: DataHelper.tumEklenenDersler.length),
+                  child: OrtalamaGoster(
+                      ortalama: DataHelper.ortalamaHesapla(),
+                      dersSayisi: DataHelper.tumEklenenDersler.length),
                 )
               ],
             ),
-            Expanded(
-              child: Container(
-                child: Text('Liste buraya gelecek'),
-                color: Colors.blue,
-              ),
-            )
+            Expanded(child: DersListesi())
           ],
         ));
   }
@@ -174,9 +173,7 @@ class _OrtalamaHesaplaAppPageState extends State<OrtalamaHesaplaPage> {
           harfDegeri: secilenHarfDegeri,
           krediDegeri: secilenKrediDegeri);
       DataHelper.dersEkle(eklenecekDers);
-      setState(() {
-        
-      });
+      setState(() {});
     }
   }
 }
