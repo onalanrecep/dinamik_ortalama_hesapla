@@ -3,6 +3,7 @@ import 'package:dinamik_ortalama_hesapla/helper/data_helper.dart';
 import 'package:dinamik_ortalama_hesapla/model/ders.dart';
 import 'package:dinamik_ortalama_hesapla/widgets/ders_listesi.dart';
 import 'package:dinamik_ortalama_hesapla/widgets/harf_dropdown_widget.dart';
+import 'package:dinamik_ortalama_hesapla/widgets/kredi_dropdown_widget.dart';
 import 'package:dinamik_ortalama_hesapla/widgets/ortalama_goster.dart';
 import 'package:flutter/material.dart';
 
@@ -87,7 +88,9 @@ class _OrtalamaHesaplaAppPageState extends State<OrtalamaHesaplaPage> {
               Expanded(
                 child: Padding(
                   padding: Sabitler.yatayPadding8,
-                  child: _buildKrediler(),
+                  child: KrediDropdownWidget(onKrediSecildi: (kredi) {
+                    secilenKrediDegeri = kredi;
+                  }),
                 ),
               ),
               IconButton(
@@ -126,31 +129,6 @@ class _OrtalamaHesaplaAppPageState extends State<OrtalamaHesaplaPage> {
               borderRadius: Sabitler.borderRadius, borderSide: BorderSide.none),
           filled: true,
           fillColor: Sabitler.anaRenk.shade100.withOpacity(0.3)),
-    );
-  }
-
-  _buildHarfler() {}
-
-  _buildKrediler() {
-    return Container(
-      alignment: Alignment.center,
-      padding: Sabitler.dropDownPadding,
-      decoration: BoxDecoration(
-          color: Sabitler.anaRenk.shade100.withOpacity(0.3),
-          borderRadius: Sabitler.borderRadius),
-      child: DropdownButton<double>(
-        value: secilenKrediDegeri,
-        elevation: 16,
-        iconEnabledColor: Sabitler.anaRenk.shade200,
-        onChanged: (deger) {
-          setState(() {
-            secilenKrediDegeri = deger!;
-            print(deger);
-          });
-        },
-        underline: Container(),
-        items: DataHelper.tumDerslerinKredileri(),
-      ),
     );
   }
 
