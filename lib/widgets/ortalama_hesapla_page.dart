@@ -48,7 +48,12 @@ class _OrtalamaHesaplaAppPageState extends State<OrtalamaHesaplaPage> {
                 )
               ],
             ),
-            Expanded(child: DersListesi())
+            Expanded(child: DersListesi(
+              onElemanCikarildi: (index) {
+                DataHelper.tumEklenenDersler.removeAt(index);
+                setState(() {});
+              },
+            ))
           ],
         ));
   }
